@@ -1,4 +1,7 @@
 using Hub.Service.Middleware;
+using Hub.Service.Models;
+using Hub.Service.Repositories;
+using Hub.Service.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,12 +23,16 @@ namespace Hub.Service
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.Configure<DatabaseSettings>(o => Configuration.GetSection("DatabaseSettings").Bind(o));
 
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hub.Service", Version = "v1" });
 			});
+
+			services.AddScoped<IProductService, ProductService>();
+			services.AddScoped<IProductRepository, ProductRepository>();			
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
