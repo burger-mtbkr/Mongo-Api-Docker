@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hub.Service", "Hub.Service\Hub.Service.csproj", "{A419B89B-220D-442A-AAAC-3240628D0283}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A419B89B-220D-442A-AAAC-3240628D0283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A419B89B-220D-442A-AAAC-3240628D0283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A419B89B-220D-442A-AAAC-3240628D0283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A419B89B-220D-442A-AAAC-3240628D0283}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {122127AF-25CA-4231-AF29-C7EA44B93932}
+	EndGlobalSection
+EndGlobal
