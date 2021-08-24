@@ -29,7 +29,12 @@ namespace Hub.Service
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
 			{
-				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hub.Service", Version = "v1" });
+				c.SwaggerDoc("v1", new OpenApiInfo 
+				{ 
+					Title = "Hub.Service",
+					Description = "Demo Api with Mongo Db adn docker",
+					Version = "v1"
+				});
 			});
 
 			services.AddScoped<IProductService, ProductService>();

@@ -1,11 +1,9 @@
 ﻿using Hub.Service.Models;
 using Hub.Service.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -36,7 +34,7 @@ namespace Hub.Service.Controllers
 		[HttpGet("{id:length(24)}", Name = "GetProduct")]
 		[ProducesResponseType((int)HttpStatusCode.NotFound)]
 		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
-		public async Task<ActionResult<Product>> GetProductById(string id)
+		public async Task<ActionResult<Product>> GetProductById(long id)
 		{
 			var product = await _productService.GetProduct(id); if (product == null)
 			{
@@ -59,7 +57,8 @@ namespace Hub.Service.Controllers
 		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
 		public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
 		{
-			await _productService.CreateProduct(product); return CreatedAtRoute("GetProduct", new { id = product.Id }, product);
+			await _productService.CreateProduct(product); 
+			return CreatedAtRoute("GetProduct", new { id = product.Id }, product);
 		}
 
 		[HttpPut]
@@ -71,7 +70,7 @@ namespace Hub.Service.Controllers
 
 		[HttpDelete("{id:length(24)}", Name = "DeleteProduct")]
 		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
-		public async Task<IActionResult> DeleteProductById(string id)
+		public async Task<IActionResult> DeleteProductById(long id)
 		{
 			return Ok(await _productService.DeleteProduct(id));
 		}

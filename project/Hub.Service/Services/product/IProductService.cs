@@ -7,10 +7,10 @@ namespace Hub.Service.Services
 	public interface IProductService
 	{
         Task<IEnumerable<Product>> GetProducts();
-        Task<Product> GetProduct(string id);
+        Task<Product> GetProduct(long id);
         Task<IEnumerable<Product>> GetProductByName(string name);
         Task<IEnumerable<Product>> GetProductByCategory(string categoryName); Task CreateProduct(Product product);
         Task<bool> UpdateProduct(Product product);
-        Task<bool> DeleteProduct(string id);
+        Task<bool> DeleteProduct(long id);
     }
 }
