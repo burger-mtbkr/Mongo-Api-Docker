@@ -21,7 +21,7 @@ services:
     depends_on:
       - mongo
 
-   products-servicer:
+   products-server:
     build: .
     restart: always
     ports:

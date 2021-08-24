@@ -1,12 +1,24 @@
-﻿FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
-WORKDIR /app
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-# Copy everything and build
-COPY . ./
+#Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
+#For more information, please see https://aka.ms/containercompat
 
-RUN dotnet restore "./Hub.Service.csproj"
-RUN dotnet publish "Hub.Service.csproj" -c Release -o out
-FROM microsoft/dotnet:aspnetcore-runtime
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
-COPY --from=build-env /app/out .
+EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /src
+COPY ["Hub.Service/Hub.Service.csproj", "Hub.Service/"]
+RUN dotnet restore "Hub.Service/Hub.Service.csproj"
+COPY . .
+WORKDIR "/src/Hub.Service"
+RUN dotnet build "Hub.Service.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "Hub.Service.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Hub.Service.dll"]
