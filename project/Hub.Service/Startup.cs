@@ -1,3 +1,4 @@
+using Hub.Service.Infrastructure.MongoDb;
 using Hub.Service.Middleware;
 using Hub.Service.Models;
 using Hub.Service.Repositories;
@@ -23,7 +24,7 @@ namespace Hub.Service
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.Configure<DatabaseSettings>(o => Configuration.GetSection("DatabaseSettings").Bind(o));
+			services.Configure<MongoDBConfig>(o => Configuration.GetSection("MongoDBConfig").Bind(o));					
 
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
