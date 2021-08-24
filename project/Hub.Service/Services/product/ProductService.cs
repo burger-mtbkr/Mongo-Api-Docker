@@ -3,7 +3,6 @@ using Hub.Service.Repositories;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Hub.Service.Services
@@ -23,7 +22,8 @@ namespace Hub.Service.Services
 			.Find(p => true)
 			.ToListAsync();
 		}
-		public async Task<Product> GetProduct(string id)
+
+		public async Task<Product> GetProduct(long id)
 		{
 			return await _productRepository
 			.Products
@@ -32,7 +32,9 @@ namespace Hub.Service.Services
 		}
 		public async Task<IEnumerable<Product>> GetProductByName(string name)
 		{
-			FilterDefinition<Product> filter = Builders<Product>.Filter.ElemMatch(p => p.Name, name); return await _productRepository
+			FilterDefinition<Product> filter = Builders<Product>.Filter.ElemMatch(p => p.Name, name); 
+			
+			return await _productRepository
 			.Products
 			.Find(filter)
 			.ToListAsync();
@@ -40,7 +42,9 @@ namespace Hub.Service.Services
 
 		public async Task<IEnumerable<Product>> GetProductByCategory(string categoryName)
 		{
-			FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Category, categoryName); return await _productRepository
+			FilterDefinition<Product> filter = Builders<Product>.Filter.Eq(p => p.Category, categoryName); 
+			
+			return await _productRepository
 			.Products
 			.Find(filter)
 			.ToListAsync();
@@ -55,9 +59,11 @@ namespace Hub.Service.Services
 		{
 			var updateResult = await _productRepository
 			.Products.ReplaceOneAsync(filter: g => g.Id == product.Id, replacement: product);
+			
 			return updateResult.IsAcknowledged && updateResult.ModifiedCount > 0;
 		}
-		public async Task<bool> DeleteProduct(string id)
+
+		public async Task<bool> DeleteProduct(long id)
 		{
 			var filter = Builders<Product>.Filter.Eq(p => p.Id, id);
 

@@ -1,20 +1,20 @@
-﻿using Hub.Service.Models;
+﻿using Hub.Service.Infrastructure.MongoDb;
+using Hub.Service.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 namespace Hub.Service.Repositories
 {
 	public class ProductRepository : IProductRepository
-	{
-		public IMongoCollection<Product> Products { get; }
-		private readonly MongoClient _productClient;
-		private readonly IMongoDatabase _database;
+	{	
+		private readonly IMongoDatabase _db;
 
-		public ProductRepository(IOptions<DatabaseSettings> settings)
+		public ProductRepository(IOptions<MongoDBConfig> config)
 		{
-			_productClient = new MongoClient(settings.Value.ConnectionString);
-			_database = _productClient.GetDatabase(settings.Value.DatabaseName);
-			Products = _database.GetCollection<Product>(settings.Value.CollectionName);
+			var client = new MongoClient(config.Value.ConnectionString);
+			_db = client.GetDatabase(config.Value.Database);
 		}
+
+		public IMongoCollection<Product> Products => _db.GetCollection<Product>("Products");
 	}
 }
