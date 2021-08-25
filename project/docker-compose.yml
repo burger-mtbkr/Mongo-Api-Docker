@@ -4,6 +4,8 @@ services:
    hub-service-db:
     container_name: hub-service-db
     image: mongo
+    volumes:
+     - ./hub.service:/hub.db
     restart: always
     ports:
       - 27017:27017
