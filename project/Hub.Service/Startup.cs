@@ -46,12 +46,13 @@ namespace Hub.Service
 		{
 			if (env.IsDevelopment())
 			{
-				app.UseDeveloperExceptionPage();
-				app.UseSwagger();
-				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Hub.Service v1"));
+				app.UseDeveloperExceptionPage();			
 			}
 
-			app.UseMiddleware<ErrorMiddleware>();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Hub.Service v1"));
+
+            app.UseMiddleware<ErrorMiddleware>();
 
 			app.UseRouting();
 
