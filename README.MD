@@ -1,4 +1,4 @@
-###.Net 5.0 API using Mongo DB and Docker Compose
+### .Net 5.0 API using Mongo DB and Docker Compose
 
 **Based on this tutorial:**
 https://medium.com/@kristaps.strals/docker-mongodb-net-core-a-good-time-e21f1acb4b7b
