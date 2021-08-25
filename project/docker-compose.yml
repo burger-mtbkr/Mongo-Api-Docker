@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3.1'
 services:
 
    hub-service-db:
@@ -8,14 +8,15 @@ services:
     ports:
       - 27017:27017
 
-   hub-service-api:
+   hub-service:
     container_name: hub-service-api
     build: .
     restart: always
     ports:
-      - 5000:5000
+      - 5000:80
     environment:
-      ASPNETCORE_URLS: http://+:5000
-      MongoDBConfig__Host: mongo
+      MongoDBConfig__Host: hub-service-db
     depends_on:
       - hub-service-db
+    volumes:
+     - ./hub.service:/hub.service
