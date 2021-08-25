@@ -31,20 +31,23 @@ namespace Hub.Service.Controllers
 			return Ok(products);
 		}
 
-		[HttpGet("{id:length(24)}", Name = "GetProduct")]
+		[HttpGet("{id}", Name = nameof(GetProductById))]
 		[ProducesResponseType((int)HttpStatusCode.NotFound)]
 		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
 		public async Task<ActionResult<Product>> GetProductById(long id)
 		{
-			var product = await _productService.GetProduct(id); if (product == null)
+			var product = await _productService.GetProduct(id);
+
+            if (product == null)
 			{
 				_logger.LogError($"Product with id: {id}, not found.");
 				return NotFound();
 			}
+
 			return Ok(product);
 		}
 
-		[Route("[action]/{category}", Name = "GetProductByCategory")]
+		[Route("[action]/{category}", Name = nameof(GetProductByCategory))]
 		[HttpGet]
 		[ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
 		public async Task<ActionResult<IEnumerable<Product>>> GetProductByCategory(string category)
@@ -58,7 +61,7 @@ namespace Hub.Service.Controllers
 		public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
 		{
 			await _productService.CreateProduct(product); 
-			return CreatedAtRoute("GetProduct", new { id = product.Id }, product);
+			return CreatedAtRoute(nameof(GetProductById), new { id = product.Id }, product);
 		}
 
 		[HttpPut]
@@ -68,7 +71,7 @@ namespace Hub.Service.Controllers
 			return Ok(await _productService.UpdateProduct(product));
 		}
 
-		[HttpDelete("{id:length(24)}", Name = "DeleteProduct")]
+		[HttpDelete("{id}", Name = nameof(DeleteProductById))]
 		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
 		public async Task<IActionResult> DeleteProductById(long id)
 		{
