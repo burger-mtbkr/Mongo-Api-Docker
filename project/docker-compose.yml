@@ -4,12 +4,12 @@ services:
    hub-service-db:
     container_name: hub-service-db
     image: mongo
-    volumes:
-     - ./hub.service:/hub.db
     restart: always
     ports:
       - 27017:27017
-
+    volumes:
+      - ./db/:/dump/:rw
+      
    hub-service:
     container_name: hub-service-api
     build: .
@@ -21,4 +21,4 @@ services:
     depends_on:
       - hub-service-db
     volumes:
-     - ./hub.service:/hub.service
+      - ./hub.service:/hub.service:rw

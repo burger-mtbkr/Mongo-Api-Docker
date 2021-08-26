@@ -1,0 +1,68 @@
+[
+  {
+    "Id": 1000,
+    "Name": "moots",
+    "Category": "bike",
+    "Price": 15000
+  },
+  {
+    "Id": 2000,
+    "Name": "giant",
+    "Category": "bike",
+    "Price": 5000
+  },
+  {
+    "Id": 3000,
+    "Name": "trek",
+    "Category": "bike",
+    "Price": 10000
+  },
+  {
+    "Id": 4000,
+    "Name": "specialized",
+    "Category": "bike",
+    "Price": 19000
+  },
+  {
+    "Id": 5000,
+    "Name": "bridgestone",
+    "Category": "bike",
+    "Price": 1100
+  },
+  {
+    "Id": 6000,
+    "Name": "Yeti",
+    "Category": "bike",
+    "Price": 9000
+  },
+  {
+    "Id": 7000,
+    "Name": "Mereda",
+    "Category": "bike",
+    "Price": 8000
+  },
+  {
+    "Id": 9000,
+    "Name": "GT",
+    "Category": "bike",
+    "Price": 12000
+  },
+  {
+    "Id": 10000,
+    "Name": "Pivot",
+    "Category": "bike",
+    "Price": 9000
+  },
+  {
+    "Id": 11000,
+    "Name": "Jones",
+    "Category": "13000",
+    "Price": 9000
+  },
+  {
+    "Id": 11000,
+    "Name": "Jones",
+    "Category": "13000",
+    "Price": 9000
+  }
+]
