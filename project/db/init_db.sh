@@ -1,0 +1,1 @@
+mongoimport --jsonArray --db ProductsDB --collection Products --file ./dump/db.json
