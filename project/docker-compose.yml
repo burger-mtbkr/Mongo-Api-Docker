@@ -13,6 +13,7 @@ services:
       
    hub-service:
     container_name: hub-service-api
+    image: loanburger/dotnet-mongo-docker:latest
     build: 
       context: ./hub.service
     restart: always
