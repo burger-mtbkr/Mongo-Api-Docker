@@ -9,10 +9,10 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["Hub.Service/Hub.Service.csproj", "Hub.Service/"]
-RUN dotnet restore "Hub.Service/Hub.Service.csproj"
+COPY ["Hub.Service.csproj", "."]
+RUN dotnet restore "./Hub.Service.csproj"
 COPY . .
-WORKDIR "/src/Hub.Service"
+WORKDIR "/src/."
 RUN dotnet build "Hub.Service.csproj" -c Release -o /app/build
 
 FROM build AS publish
