@@ -42,6 +42,7 @@ ___
 
 **Helpful Links:**
 - [This project image on Docker hub](https://hub.docker.com/repository/docker/loanburger/dotnet-mongo-docker/general)
+- [Pushing Docker images to a private registry with Docker Compose](https://medium.com/@stoyanov.veseline/pushing-docker-images-to-a-private-registry-with-docker-compose-d2797097751)
 
 **Troubleshooting**
 
