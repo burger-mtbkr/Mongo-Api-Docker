@@ -2,8 +2,9 @@
 
 **Prerequisites:**
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
-- [Robo 3T: the hobbyist GUI](https://robomongo.org/download)
-- Also useful to use Postman to test
+- .Net 5
+- Mongo DB Driver
+- [Robo 3T: the hobbyist GUI](https://robomongo.org/download) (optional)
 
 
 **How to setup:**
