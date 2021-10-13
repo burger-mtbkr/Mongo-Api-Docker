@@ -38,8 +38,10 @@ namespace Hub.Service
 			});
 
 			services.AddScoped<IProductService, ProductService>();
-			services.AddScoped<IProductRepository, ProductRepository>();			
-		}
+			services.AddScoped<IProductRepository, ProductRepository>();
+
+            services.AddCors();
+        }
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -56,7 +58,13 @@ namespace Hub.Service
 
 			app.UseRouting();
 
-			app.UseAuthorization();
+            app.UseCors(x => x
+             .AllowAnyMethod()
+             .AllowAnyHeader()
+             .SetIsOriginAllowed(origin => true) // allow any origin
+             .AllowCredentials()); // allow credentials
+
+            app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
 			{

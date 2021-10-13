@@ -1,8 +1,8 @@
 version: '3.1'
 services:
 
-   hub-service-db:
-    container_name: hub-service-db
+   product-service-db:
+    container_name: product-service-db
     image: mongo
     restart: always
     ports:
@@ -12,14 +12,14 @@ services:
       - ./db/:/docker-entrypoint-initdb.d/:ro  
       
    hub-service:
-    container_name: hub-service-api
+    container_name: product-service-api
     image: loanburger/dotnet-mongo-docker:latest
     build: 
-      context: ./hub.service
+      context: ./product.service
     restart: always
     ports:
       - 5000:80
     environment:
-      MongoDBConfig__Host: hub-service-db
+      MongoDBConfig__Host: product-service-db
     depends_on:
-      - hub-service-db
+      - product-service-db
