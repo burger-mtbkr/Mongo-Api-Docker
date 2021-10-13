@@ -9,16 +9,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["Hub.Service.csproj", "."]
-RUN dotnet restore "./Hub.Service.csproj"
+COPY ["Product.Service.csproj", "."]
+RUN dotnet restore "./Product.Service.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "Hub.Service.csproj" -c Release -o /app/build
+RUN dotnet build "Product.Service.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Hub.Service.csproj" -c Release -o /app/publish
+RUN dotnet publish "Product.Service.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Hub.Service.dll"]
+ENTRYPOINT ["dotnet", "Product.Service.dll"]

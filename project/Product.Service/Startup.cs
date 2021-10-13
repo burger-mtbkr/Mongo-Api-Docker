@@ -1,16 +1,15 @@
-using Hub.Service.Infrastructure.MongoDb;
-using Hub.Service.Middleware;
-using Hub.Service.Models;
-using Hub.Service.Repositories;
-using Hub.Service.Services;
+using ProductService.Infrastructure.MongoDb;
+using ProductService.Middleware;
+using ProductService.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using ProductService.Services;
 
-namespace Hub.Service
+namespace ProductService
 {
 	public class Startup
 	{
@@ -31,13 +30,13 @@ namespace Hub.Service
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo 
 				{ 
-					Title = "Hub.Service",
+					Title = "Product.Service",
 					Description = "Demo Api with Mongo Db adn docker",
 					Version = "v1"
 				});
 			});
 
-			services.AddScoped<IProductService, ProductService>();
+			services.AddScoped<IProductService, Services.ProductService>();
 			services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddCors();
@@ -52,7 +51,7 @@ namespace Hub.Service
 			}
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Hub.Service v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Product.Service v1"));
 
             app.UseMiddleware<ErrorMiddleware>();
 

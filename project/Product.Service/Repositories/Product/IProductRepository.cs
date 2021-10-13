@@ -1,7 +1,7 @@
-﻿using Hub.Service.Models;
+﻿using ProductService.Models;
 using MongoDB.Driver;
 
-namespace Hub.Service.Repositories
+namespace ProductService.Repositories
 {
 	public interface IProductRepository
 	{

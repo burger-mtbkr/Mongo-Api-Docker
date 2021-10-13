@@ -11,7 +11,7 @@ services:
       - ./db/dump/:/dump/:rw
       - ./db/:/docker-entrypoint-initdb.d/:ro  
       
-   hub-service:
+   product-service:
     container_name: product-service-api
     image: loanburger/dotnet-mongo-docker:latest
     build: 

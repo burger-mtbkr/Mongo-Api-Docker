@@ -1,4 +1,4 @@
-﻿namespace Hub.Service.Infrastructure.MongoDb
+﻿namespace ProductService.Infrastructure.MongoDb
 {
 	public class MongoDBConfig
 	{

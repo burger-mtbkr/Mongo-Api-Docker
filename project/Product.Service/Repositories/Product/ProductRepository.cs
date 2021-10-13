@@ -1,9 +1,9 @@
-﻿using Hub.Service.Infrastructure.MongoDb;
-using Hub.Service.Models;
+﻿using ProductService.Infrastructure.MongoDb;
+using ProductService.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace Hub.Service.Repositories
+namespace ProductService.Repositories
 {
 	public class ProductRepository : IProductRepository
 	{	

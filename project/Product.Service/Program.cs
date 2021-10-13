@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Hub.Service
+namespace ProductService
 {
 	public class Program
 	{

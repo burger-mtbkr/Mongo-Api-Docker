@@ -1,5 +1,5 @@
-﻿using Hub.Service.Models;
-using Hub.Service.Services;
+﻿using ProductService.Models;
+using ProductService.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Hub.Service.Controllers
+namespace ProductService.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
@@ -34,7 +34,7 @@ namespace Hub.Service.Controllers
 		[HttpGet("{id}", Name = nameof(GetProductById))]
 		[ProducesResponseType((int)HttpStatusCode.NotFound)]
 		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
-		public async Task<ActionResult<Product>> GetProductById(long id)
+		public async Task<ActionResult<Product>> GetProductById(Guid id)
 		{
 			var product = await _productService.GetProduct(id);
 
@@ -73,7 +73,7 @@ namespace Hub.Service.Controllers
 
 		[HttpDelete("{id}", Name = nameof(DeleteProductById))]
 		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
-		public async Task<IActionResult> DeleteProductById(long id)
+		public async Task<IActionResult> DeleteProductById(Guid id)
 		{
 			return Ok(await _productService.DeleteProduct(id));
 		}

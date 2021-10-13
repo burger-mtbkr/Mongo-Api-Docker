@@ -1,11 +1,11 @@
-﻿using Hub.Service.Models;
+﻿using ProductService.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Hub.Service.Controllers
+namespace ProductService.Controllers
 {
     [Route("api/[controller]")]
 	[ApiController]

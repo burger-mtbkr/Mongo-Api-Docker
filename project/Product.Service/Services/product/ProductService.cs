@@ -1,12 +1,12 @@
-﻿using Hub.Service.Models;
-using Hub.Service.Repositories;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
+using ProductService.Models;
+using ProductService.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Hub.Service.Services
+namespace ProductService.Services
 {
     public class ProductService : IProductService
     {
@@ -26,7 +26,7 @@ namespace Hub.Service.Services
             .ToListAsync();
         }
 
-        public async Task<Product> GetProduct(long id)
+        public async Task<Product> GetProduct(Guid id)
         {
             return await _productRepository
             .Products
@@ -65,7 +65,7 @@ namespace Hub.Service.Services
             return updateResult.IsAcknowledged && updateResult.ModifiedCount > 0;
         }
 
-        public async Task<bool> DeleteProduct(long id)
+        public async Task<bool> DeleteProduct(Guid id)
         {
             var filter = Builders<Product>.Filter.Eq(p => p.Id, id);
 

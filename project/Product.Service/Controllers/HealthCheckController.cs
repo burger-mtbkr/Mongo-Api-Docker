@@ -2,7 +2,7 @@
 using System;
 using System.Net;
 
-namespace Hub.Service.Controllers
+namespace ProductService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

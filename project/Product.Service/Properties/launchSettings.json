@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Hub.Service": {
+    "Product.Service": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

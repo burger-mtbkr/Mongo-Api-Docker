@@ -1,6 +1,6 @@
 using System;
 
-namespace Hub.Service.Models
+namespace ProductService.Models
 {
 	public class WeatherForecast
 	{
