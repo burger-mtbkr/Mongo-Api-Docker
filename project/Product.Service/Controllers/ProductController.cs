@@ -57,7 +57,7 @@ namespace ProductService.Controllers
 		}
 
 		[HttpPost]
-		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
+		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.Created)]
 		public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
 		{
 			await _productService.CreateProduct(product); 
@@ -65,17 +65,19 @@ namespace ProductService.Controllers
 		}
 
 		[HttpPut]
-		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
+		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.NoContent)]
 		public async Task<IActionResult> UpdateProduct([FromBody] Product product)
 		{
-			return Ok(await _productService.UpdateProduct(product));
+            await _productService.UpdateProduct(product);
+            return NoContent();
 		}
 
 		[HttpDelete("{id}", Name = nameof(DeleteProductById))]
-		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
+		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.NoContent)]
 		public async Task<IActionResult> DeleteProductById(Guid id)
 		{
-			return Ok(await _productService.DeleteProduct(id));
-		}
+            await _productService.DeleteProduct(id);
+            return NoContent();
+        }
 	}
 }

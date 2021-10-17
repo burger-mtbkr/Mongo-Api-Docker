@@ -53,14 +53,22 @@ namespace ProductService.Services
             .ToListAsync();
         }
 
-        public async Task CreateProduct(Product product) =>
+        public async Task CreateProduct(Product product)
+        {
+            product.Id = Guid.NewGuid();
             await _productRepository.Products.InsertOneAsync(product);
+        }
 
 
         public async Task<bool> UpdateProduct(Product product)
         {
-            var updateResult = await _productRepository
-            .Products.ReplaceOneAsync(filter: g => g.Id == product.Id, replacement: product);
+            var existing = await _productRepository
+             .Products
+             .Find(p => p.Id == product.Id)
+             .FirstOrDefaultAsync();
+            product.InternalId = existing.InternalId;
+
+            var updateResult = await _productRepository.Products.ReplaceOneAsync(g => g.Id == product.Id, product);
 
             return updateResult.IsAcknowledged && updateResult.ModifiedCount > 0;
         }
