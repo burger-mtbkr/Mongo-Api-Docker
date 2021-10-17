@@ -26,7 +26,7 @@ namespace ProductService.Services
             .ToListAsync();
         }
 
-        public async Task<Product> GetProduct(Guid id)
+        public async Task<Product> GetProduct(string id)
         {
             return await _productRepository
             .Products
@@ -55,7 +55,7 @@ namespace ProductService.Services
 
         public async Task CreateProduct(Product product)
         {
-            product.Id = Guid.NewGuid();
+            product.Id = Guid.NewGuid().ToString();
             await _productRepository.Products.InsertOneAsync(product);
         }
 
@@ -73,7 +73,7 @@ namespace ProductService.Services
             return updateResult.IsAcknowledged && updateResult.ModifiedCount > 0;
         }
 
-        public async Task<bool> DeleteProduct(Guid id)
+        public async Task<bool> DeleteProduct(string id)
         {
             var filter = Builders<Product>.Filter.Eq(p => p.Id, id);
 

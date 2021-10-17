@@ -34,7 +34,7 @@ namespace ProductService.Controllers
 		[HttpGet("{id}", Name = nameof(GetProductById))]
 		[ProducesResponseType((int)HttpStatusCode.NotFound)]
 		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
-		public async Task<ActionResult<Product>> GetProductById(Guid id)
+		public async Task<ActionResult<Product>> GetProductById(string id)
 		{
 			var product = await _productService.GetProduct(id);
 
@@ -74,7 +74,7 @@ namespace ProductService.Controllers
 
 		[HttpDelete("{id}", Name = nameof(DeleteProductById))]
 		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.NoContent)]
-		public async Task<IActionResult> DeleteProductById(Guid id)
+		public async Task<IActionResult> DeleteProductById(string id)
 		{
             await _productService.DeleteProduct(id);
             return NoContent();
