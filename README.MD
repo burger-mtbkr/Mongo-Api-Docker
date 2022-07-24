@@ -43,10 +43,9 @@ ___
 **Helpful Links:**
 - [This project image on Docker hub](https://hub.docker.com/repository/docker/loanburger/dotnet-mongo-docker/general)
 - [Pushing Docker images to a private registry with Docker Compose](https://medium.com/@stoyanov.veseline/pushing-docker-images-to-a-private-registry-with-docker-compose-d2797097751)
+- [How to create a DB for MongoDB container on start up?](https://stackoverflow.com/questions/42912755/how-to-create-a-db-for-mongodb-container-on-start-up/42917632#42917632)
+-[Localstack Resource Creation on Initialization](https://aws.plainenglish.io/localstack-resource-creation-on-initialization-a86c2ce42310#:~:text=From%20a%20directory%20where%20docker%2Dcompose.yml%20is%2C%20execute%20a%20command)
 
 **Troubleshooting**
 
 - For "requested access to the resource is denied" [see this solution](https://stackoverflow.com/questions/41984399/denied-requested-access-to-the-resource-is-denied-docker)
-
-
-
